@@ -18,7 +18,7 @@ A seamlessly easy-to-use cloud-based file management software over the cloud. Ef
     - Learn about deployment and maintenance.
 
 
-####MVP features:
+#### MVP features:
 - **<i class="fa-solid fa-user-lock"></i> Simple User Authentication and Authorization**
 - **<i class="fa-solid fa-user-pen"></i> Simple Profile/Account page**
 - **<i class="fa-solid fa-house-user"></i> Dashboard**
@@ -39,7 +39,7 @@ NON-MVP features:
 - **Integrate an AI assistant which adapts to your file structure and helps simplify your workflow.**
 - Deployment using Nginx to RPi & Cloud platforms like Azure or AWS
 
-####UI references:
+#### UI references:
 
 Reference image 1:
 [![Reference image 1](https://cdn.dribbble.com/users/1409180/screenshots/14196603/media/86ad9ff56946776a4f9e5fa00e12c591.png)](https://dribbble.com/shots/14196603-Dashboard-File-manager)
