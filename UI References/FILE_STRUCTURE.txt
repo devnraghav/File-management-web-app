@@ -1,0 +1,22 @@
+This is my app's file structure.
+
+APP/
+|
+|-- front_end/
+|   |- pages/
+|   |   |- home.html
+|   |- styles/
+|   |   |- home.css
+|   |- scripts/
+|   |   |- home.js
+|
+|-- backend/
+|   |- main.py
+|   |- api/
+|   |   |- endpoints.py
+|   |
+|   |- database/
+|   |   |- connection.py
+|   |
+|   |- models/
+|   |   |- user.py
