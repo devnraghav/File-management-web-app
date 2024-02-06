@@ -1,0 +1,107 @@
+
+
+:root {
+    /* define a variable */
+    --primary-theme: rgb(255, 255, 255);
+    --secondary-theme: rgb(104, 151, 255);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#auth-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#auth-container, #welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    padding: 50px;
+}
+
+#auth-container {
+    background-color: var(--primary-theme);
+}
+
+#auth-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 10px;
+}
+
+#auth-form #auth-submit {
+    height: 50px;
+    width: 100%;
+    color: var(--primary-theme);
+    font-size: 100%;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--secondary-theme);
+}
+
+#auth-form #auth-submit:hover {
+    cursor: pointer;
+    border: 2px solid black;
+    /* background-color: var(--primary-theme);
+    color: var(--secondary-theme); */
+}
+
+#auth-form #auth-submit:active {
+    transform: scale(0.95);
+}
+
+#auth-form input {
+    height: 50px;
+    width: 100%;
+    font-size: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(241, 241, 241);
+}
+
+#auth-form input:focus {
+    outline: none;
+}
+
+#auth-form input::placeholder {
+    color: rgb(171, 171, 171);
+}
+
+#login-registration-toggle-link {
+    color: var(--secondary-theme);
+    text-decoration: none;
+}
+
+#login-registration-toggle-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#welcome-container {
+    flex-direction: column;
+    background-color: var(--secondary-theme);
+    text-align: center;
+}
