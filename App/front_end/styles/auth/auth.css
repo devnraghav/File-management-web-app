@@ -32,6 +32,7 @@ main {
 
 #auth-container, #welcome-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 50%;
@@ -98,6 +99,17 @@ main {
 #login-registration-toggle-link:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+#error-container {
+    border-radius: 5px;
+    min-height: 10px;
+    width: 100%;
+    background-color: rgb(255, 177, 177);
+    color: gray;
+    word-wrap: break-word;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 #welcome-container {

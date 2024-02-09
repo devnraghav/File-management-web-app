@@ -1,4 +1,4 @@
-# File Management App (SPA)
+# File Management SPA (In Development)
 
 #### MVP DEADLINE: FEB 29th, 2024.
 
