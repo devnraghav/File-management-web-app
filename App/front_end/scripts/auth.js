@@ -110,8 +110,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 // store the token in local storage
                 localStorage.setItem('file_management_app', data.token);
                 // DONE. REDIRECT TO DASHBOARD
-                auth_section.style.visibility = 'hidden';
-                dashboard_section.style.visibility = 'visible';
+                auth_section.style.display = 'none';
+                dashboard_section.style.display = 'flex';
             }
         })
         .catch(error => {

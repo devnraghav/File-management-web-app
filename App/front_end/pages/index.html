@@ -16,17 +16,28 @@
     <link rel="stylesheet" href="/App/front_end/styles/styles.css">
     <link rel="stylesheet" href="/App/front_end/styles/auth.css">
     <link rel="stylesheet" href="/App/front_end/styles/dashboard.css">
+    <link rel="stylesheet" href="/App/front_end/styles/popup.css">
+
 
     <!-- scripts -->
     <script src="/App/front_end/scripts/index.js" defer></script>
     <script src="/App/front_end/scripts/auth.js" defer></script>
-    <script src="/App/front_end/scripts/dashboard.js" defer></script>
+    <script src="/App/front_end/scripts/dashboard.js" defer type="module"></script>
 
     <title>App</title>
 </head>
 <body>
     <main>
         <!-- auth section -->
+        <div class="popup">
+            <div class="popup-content">
+                <h2>htrr</h2>
+                <div>
+                    <button class="prompt-btn" id="no-prompt">Cancel</button>
+                    <button class="prompt-btn" id="yes-prompt"></button>
+                </div>
+            </div>
+        </div>
         <section id="auth-section">
             <div id="auth-container">
                 <div id="error-container">
@@ -56,8 +67,30 @@
 
         <!-- dashboard -->
         <section id="dashboard-section">
-            <button id="logout">Log out</button>
-            
+            <div class="sidebar">
+                <div class="sidebar-container">
+
+                    <button id="storage">
+                        <i class="fa-solid fa-database"></i>
+                    </button>
+
+                    <button id="favorites">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+
+                    <button id="recyle-bin">
+                        <i class="fa-solid fa-recycle"></i>
+                    </button>
+
+                    <button id="preferences">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+
+                </div>
+                <button id="logout">
+                    <i class="fa-solid fa-circle-chevron-left"></i>
+                </button>
+            </div>
         </section>
     </main>
 </body>

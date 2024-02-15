@@ -1,36 +1,39 @@
 from colorama import Fore
-from fastapi import APIRouter, Depends, HTTPException, Header
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import APIRouter, Depends, HTTPException
+# from fastapi.security import OAuth2PasswordBearer
 import jwt
-from api.endpoints.auth import is_token_valid, SECRET_KEY, ALGORITHM
+from api.endpoints.auth import is_token_valid
 from pydantic import BaseModel
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 dashboard_router = APIRouter()
 
 current_user_id = None
 
+default_reponse = {
+    'valid': None,
+    'message': None,
+    'error': None
+}
+
+blacklisted_tokens = [
+
+]
+
 @dashboard_router.post('/dashboard')
-def dashboard(token: str = Depends(oauth2_scheme)):
-
-    response = {
-        'valid': None,
-        'message': None,
-        'error': None
-    }
-
-    if not token:
-        response.update({'error': 401, 'message': 'Unauthorized'})
+def dashboard(token: dict = Depends(is_token_valid)):
+    if token['valid']:
+        # extract payload - user id
+        user_id = token['UID']
+        current_user_id = user_id
     else:
-        payload = is_token_valid(token)
-        if payload:
-            response.update({'valid': True})
-            current_user_id = payload['UID']
-        else:
-            response.update({'valid': False, 'message': 'Invalid token'})
-
-    return response
+        raise HTTPException(status_code=401, detail=f'Unauthorized: {token['error']}')
 
 
-print(Fore.RED + str(current_user_id))
+@dashboard_router.post('/dashboard/logout')
+def logout(token: dict = Depends(is_token_valid)):
+    
+    if token['valid']:
+        # perform any cleanups, etc.
+        return {'logout': True}
+    else:
+        raise HTTPException(status_code=401, detail=f'Unauthorized: {token['error']}')

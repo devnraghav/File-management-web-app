@@ -2,7 +2,6 @@
 
 from colorama import Fore
 from fastapi import APIRouter, Depends, HTTPException, Header
-# from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
 from datetime import datetime, timedelta
 import jwt
@@ -17,32 +16,32 @@ def generate_new_token(user_id, key, algorithm):
 
     # ecrypt the email before payload
     payload = {
-        'UID': user_id,
+        'sub': user_id,
         'exp': token_expire
     }
 
     return jwt.encode(payload, key, algorithm)
 
+# this function has to also check for any blacklisted tokens
+def is_token_valid(Authorization: str = Header(None)):
+    valid = False
+    token_error = ''
+    if Authorization and Authorization.startswith('Bearer'):
+        try:
+            token = Authorization.split('Bearer ')[1]
+            payload = jwt.decode(token, SECRET_KEY, algorithms=ALGORITHM)
 
-def is_token_valid(token):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=ALGORITHM)
-
-    except Exception as error:
-        
-        if isinstance(error, jwt.DecodeError):
-            print_error('Decoding error. Invalid token')
-        elif isinstance(error, jwt.ExpiredSignatureError):
-            print_error('Expired token')
-        elif isinstance(error, jwt.InvalidTokenError):
-            print_error('Invalid token format')
-        else:
-            print_error('Something went wrong validating token')
-
-        return False
-    # by default return true if our token was valid
-    return payload
-
+            return {'valid': True, 'UID': payload['sub']}
+        except Exception as error:  
+            if isinstance(error, jwt.DecodeError):
+                token_error = 'Invalid token'
+            elif isinstance(error, jwt.ExpiredSignatureError):
+                token_error = 'Expired token'
+            elif isinstance(error, jwt.InvalidTokenError):
+                token_error = 'Invalid token format'
+            else:
+                token_error = f'Unexpected token error: {error}'   
+    return {'valid': valid, 'error': token_error}
 
 # fake database
 fake_db = [
@@ -93,7 +92,7 @@ auth_router = APIRouter()
 
 SECRET_KEY = 'be348ed3ab2f6179a07af7759a980eaf9d4d1892d5c611796b75bb27f1c300fa20ef0b7e56cd7ab9cec5670360e1a781a6c89e06469caa4ef7c8f235e72bdca4'
 ALGORITHM = 'HS256'
-TOKEN_EXPIRY_MINS = 2
+TOKEN_EXPIRY_MINS = 120
 
 @auth_router.post('/login')
 def login(data: User_model):
@@ -104,6 +103,9 @@ def login(data: User_model):
     if user_exists:
 
         new_token = generate_new_token(user_exists, SECRET_KEY, ALGORITHM)
+
+
+        # add this token to the database with the user
 
         response.update({'token': new_token})
 
