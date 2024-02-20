@@ -55,6 +55,7 @@
     border: none;
     border-radius: 10px;
     background-color: rgb(241, 241, 241);
+    color: black;
 }
 
 #auth-form input:focus {

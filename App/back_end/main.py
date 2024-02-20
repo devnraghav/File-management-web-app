@@ -30,5 +30,3 @@ app.add_middleware(
 # including all our endpoints
 app.include_router(auth.auth_router)
 app.include_router(dashboard.dashboard_router)
-
-

@@ -16,28 +16,19 @@
     <link rel="stylesheet" href="/App/front_end/styles/styles.css">
     <link rel="stylesheet" href="/App/front_end/styles/auth.css">
     <link rel="stylesheet" href="/App/front_end/styles/dashboard.css">
-    <link rel="stylesheet" href="/App/front_end/styles/popup.css">
-
+    <link rel="stylesheet" href="/App/front_end/styles/account_preferences.css">
 
     <!-- scripts -->
-    <script src="/App/front_end/scripts/index.js" defer></script>
-    <script src="/App/front_end/scripts/auth.js" defer></script>
+    <script src="/App/front_end/scripts/index.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/auth.js" defer type="module"></script>
     <script src="/App/front_end/scripts/dashboard.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/account_preferences.js" defer type="module"></script>
 
     <title>App</title>
 </head>
 <body>
     <main>
         <!-- auth section -->
-        <div class="popup">
-            <div class="popup-content">
-                <h2>htrr</h2>
-                <div>
-                    <button class="prompt-btn" id="no-prompt">Cancel</button>
-                    <button class="prompt-btn" id="yes-prompt"></button>
-                </div>
-            </div>
-        </div>
         <section id="auth-section">
             <div id="auth-container">
                 <div id="error-container">
@@ -57,40 +48,77 @@
                     <input type="submit" value="Login" id="auth-submit">
                 </form>
             </div>
-            
             <div id="welcome-container">
                 <h1>Welcome to App</h1>
                 <br>
                 <h2>A seamlessly easy-to-use cloud-based file management system. Effortlessly organize and access all of your files from anywhere, at any time, whether you're online or offline.</h2>
             </div>
         </section>
-
         <!-- dashboard -->
         <section id="dashboard-section">
             <div class="sidebar">
-                <div class="sidebar-container">
+                <button id="dashboard">
+                    <i class="fa-solid fa-home"></i>
+                </button>
 
-                    <button id="storage">
-                        <i class="fa-solid fa-database"></i>
-                    </button>
+                <button id="master-folders">
+                    <i class="fa-solid fa-folder"></i>
+                </button>
 
-                    <button id="favorites">
-                        <i class="fa-solid fa-star"></i>
-                    </button>
+                <button id="favorites">
+                    <i class="fa-solid fa-star"></i>
+                </button>
 
-                    <button id="recyle-bin">
-                        <i class="fa-solid fa-recycle"></i>
-                    </button>
+                <button id="recyle-bin">
+                    <i class="fa-solid fa-recycle"></i>
+                </button>
 
-                    <button id="preferences">
-                        <i class="fa-solid fa-gear"></i>
-                    </button>
-
-                </div>
+                <button id="preferences">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
                 <button id="logout">
                     <i class="fa-solid fa-circle-chevron-left"></i>
                 </button>
             </div>
+            <div class="topbar">
+                <h2>Dashboard</h2>
+                <div class="profile-preview">
+                    <img src="https://xsgames.co/randomusers/assets/images/favicon.png" alt="profile-picture">
+                </div>
+            </div>
+            <div class="view">
+                <div id="account-preferences">
+                    <div class="account-container">
+                        <div class="profile-container">
+                            <img src="https://xsgames.co/randomusers/assets/images/favicon.png" width="100px" height="100px" alt="profile picture">
+                            <h2>Raghav Kapoor</h2>
+                        </div>
+
+                        <div class="credentials-container">
+                            <form action="" id="cred-form">
+                                <label for="display_name">Display Name</label>
+                                <input type="text" name="display_name" id="cred-display-name" readonly>
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="cred-email" readonly>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="cred-password" readonly>
+                                <!-- save and cancel buttons only appear on key pressed on inputs and if credentials don't match -->
+                                <div id="cred-btn-container">
+                                    <button id="cred-edit">Edit</button>
+                                    <button id="cred-discard">Discard</button>
+                                    <button id="cred-save">Save</button> 
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="subinfo-container">
+                            <small>Subscription</small>
+                            <h1>FREE TIER</h1>
+                            <button>Upgrade to Pro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>   
         </section>
     </main>
 </body>

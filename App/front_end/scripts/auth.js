@@ -76,11 +76,6 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        data_auth = {
-            email: auth_email.value,
-            password: auth_password.value
-        };
-        
         // send the request
         
         fetch(`http://127.0.0.1:8000/${auth_type}`, 
@@ -89,12 +84,14 @@ window.addEventListener('DOMContentLoaded', () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data_auth)
+            body: JSON.stringify({
+                display_name: auth_email.value.split('@')[0],
+                email: auth_email.value,
+                password: auth_password.value
+            })
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-
             // handle any errors
 
             switch (data.error) {
