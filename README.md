@@ -29,7 +29,9 @@ A seamlessly easy-to-use cloud-based file management software over the cloud. Ef
 - **<i class="fa-solid fa-database"></i> Basic database integration and schema**
 - **<i class="fa-solid fa-circle-check"></i> Refactoring with very clean, readable, and scalable code**
 - **<i class="fa-solid fa-spray-can-sparkles"></i> Polishing UI and everything else**
-NON-MVP features:
+
+
+#### NON-MVP features:
 - Search functionality for folders, files, and their content
 - File and Folder filtering and organizing
 - Recently opened files
