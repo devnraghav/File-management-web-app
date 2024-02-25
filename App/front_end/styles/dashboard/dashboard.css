@@ -1,0 +1,130 @@
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+}
+
+/*  begins here */
+#dashboard-section {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+
+#sidebar-view-wrapper {
+    flex: 1 0 auto;
+}
+
+.sidebar {
+    width: 5%;
+    height: 100%;
+    background-color: var(--secondary-theme);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8vh;
+}
+
+.sidebar button i {
+    font-size: 150%;
+    color: #212121;
+}
+
+.sidebar button i:hover {
+    color: var(--primary-theme);
+    transition: 0.3s;
+}
+
+.topbar {
+    width: 100%;
+    height: 5%;
+    background-color: var(--secondary-theme);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px 0px 10px
+    /* border-bottom: 1px solid #212121; */
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-theme);
+    height: 70%;
+    padding: 10px;
+}
+
+#search {
+    border: none;
+    background-color: transparent
+}
+
+:focus {
+    outline: none;
+}
+
+#search::placeholder {
+    color: black;
+}
+
+#upload-btn {
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    background-color: lightgreen;
+    font-size: 100%;
+    width: 100%;
+}
+
+
+#upload-btn:hover {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.upload-options {
+    background-color: lightgreen;
+    z-index: 1;
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    transition: display 5s ease;
+}
+
+.upload-options input {
+    display: none;
+}
+.upload-options label:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.profile-preview {
+    height: 40px;
+    width: 40px;
+}
+
+.profile-preview img {
+    height: 100%;
+    width: 100%;
+}
+/* window space where dynamic content is viewed. Different sections and pages of the application */
+.view {
+    /* background-color: rgb(255, 189, 189); */
+    top: 5%;
+    left: 5%;
+    width: calc(100% - 5%);
+    height: calc(100% - 5%);
+    padding: 10px;
+}
+
+.hide-view {
+    display: none;
+}

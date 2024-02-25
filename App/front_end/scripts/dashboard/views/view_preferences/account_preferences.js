@@ -1,4 +1,4 @@
-import logout_user from "./logout.js";
+import logout_user from "../../logout.js";
 window.addEventListener('DOMContentLoaded', (e) => {
     const acccount_form = document.querySelector('#cred-form');
     const acccount_save_button = document.querySelector('#cred-save');
@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
     const acccount_edit_button = document.querySelector('#cred-edit');
     const token = localStorage.getItem('file_management_app');
     const account_form_fields = {};
+    const dashboard_greet = document.querySelectorAll('.display-name');
 
     acccount_form.querySelectorAll('input').forEach(input => {
         account_form_fields[input.name] = input;
@@ -29,9 +30,12 @@ window.addEventListener('DOMContentLoaded', (e) => {
         return res.json();
     })
     .then(user_info => {
+        dashboard_greet.forEach(greet_element => {
+            greet_element.textContent = user_info.display_name;
+        });
         account_form_fields.display_name.value = user_info.display_name;
         account_form_fields.email.value = user_info.email;
-        account_form_fields.password.value = user_info.secured_pass;
+        account_form_fields.password.value = user_info.password;
     })
     .catch(error => {
         console.log('[Account_preferences] Error getting user info:' + error);
@@ -44,14 +48,15 @@ window.addEventListener('DOMContentLoaded', (e) => {
         acccount_dicard_button.style.display = 'block';
         // disabling the readonly attribute for all the fields.
         for (let input_element in account_form_fields) {
-            account_form_fields[input_element].removeAttribute('readonly');
+            // delete the original values which were just temporary placeholder values.
+            if (input_element === 'password' || input_element === 'email' || input_element === 'display_name') {
+                account_form_fields[input_element].removeAttribute('readonly');
+            }
         }
-
         account_form_fields.original_display_name = account_form_fields.display_name.value;
         account_form_fields.original_email = account_form_fields.email.value;
         account_form_fields.original_pass = account_form_fields.password.value;
     });
-
 
     acccount_dicard_button.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -81,7 +86,6 @@ window.addEventListener('DOMContentLoaded', (e) => {
         };
     });
 
-
     // save the user info
     acccount_save_button.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -99,6 +103,10 @@ window.addEventListener('DOMContentLoaded', (e) => {
             }
         }
 
+        dashboard_greet.forEach(greet_element => {
+            greet_element.textContent = account_form_fields.display_name.value;
+        });
+
         fetch('http://127.0.0.1:8000/dashboard/account_info', {
 
             method : 'POST',
@@ -110,11 +118,12 @@ window.addEventListener('DOMContentLoaded', (e) => {
             body: JSON.stringify({
                 display_name: account_form_fields.display_name.value,
                 email: account_form_fields.email.value,
-                secured_pass: account_form_fields.password.value
+                password: account_form_fields.password.value
             })
         })
         .then(res => res.json())
         .then(data => {})
         .catch(error => console.log(error));
     });
+    
 });

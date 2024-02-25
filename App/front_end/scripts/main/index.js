@@ -1,4 +1,4 @@
-import logout_user from "./logout.js";
+import logout_user from "../dashboard/logout.js";
 window.addEventListener('DOMContentLoaded', () => {
     const auth_section = document.querySelector('#auth-section');
     const dashboard_section = document.querySelector('#dashboard-section');

@@ -1,15 +1,15 @@
 # xxxxxxx xxxxxxx AUTH FLOW xxxxxxx xxxxxxx
 
-from colorama import Fore
+from colorama import Fore, Style
 from fastapi import APIRouter, Depends, HTTPException, Header
 from pydantic import BaseModel
 from datetime import datetime, timedelta
 import jwt
 import uuid
-from database.setup import fake_db
+from database.setup import Session, Users
 
 def print_error(e):
-    print(Fore.RED + str(e))
+    print(f'{Fore.RED+Style.BRIGHT} {str(e)} {Style.RESET_ALL}')
 
 def generate_new_token(user_id, key, algorithm):
 
@@ -44,34 +44,41 @@ def is_token_valid(Authorization: str = Header(None)):
                 token_error = f'Unexpected token error: {error}'   
     return {'valid': valid, 'error': token_error}
 
-# fake database
 
 def does_user_exist(email, password):
-
-    for user_dict in fake_db:
+    session = Session()
+    try:
         if password:
-            if user_dict['email'] == email and user_dict['secured_pass'] == password:
-                return user_dict['UID']
+            user = session.query(Users).filter_by(user_email=email, user_password=password).first()
+            session.commit()
+            return user.user_id
         else:
-            if user_dict['email'] == email:
-                return user_dict['UID']
+            user = session.query(Users).filter_by(user_email=email).first()
+            session.commit()
+            return True
+    except Exception as e:
+        session.rollback()
+        print_error(f'Something went wrong checking if user exists: {e}')
+    finally:
+        session.close()
         
     # return false (not found) by default
     return False
 
 
 def add_new_user(display_name, email, password):
-
+    session = Session()
     new_user_id = str(uuid.uuid4())
 
-    fake_db.append(
-        {
-            'UID': new_user_id,
-            'display_name': display_name,
-            'email': email,
-            'secured_pass': password
-        }
-    )
+    try:
+        # generating a new user id
+        session.add(Users(user_id=new_user_id, user_email=email, user_password=password, user_display_name=display_name))
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        print_error(f'Something went wrong adding a user: {e}')
+    finally:
+        session.close()
 
     return new_user_id
 

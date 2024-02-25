@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fontawesome kit-->
+    <script src="https://kit.fontawesome.com/0d184a2536.js" crossorigin="anonymous"></script>
+
+    <!-- fonts -->
+    <!-- include any fonts -->
+    <!--  -->
+
+    <!-- styles -->
+    <!-- main CSS files -->
+    <link rel="stylesheet" href="/App/front_end/styles/main/styles.css">
+    <link rel="stylesheet" href="/App/front_end/styles/auth/auth.css">
+    <link rel="stylesheet" href="/App/front_end/styles/dashboard/dashboard.css">
+
+
+    <!-- CSS files for the view sections in dashboard -->
+    <link rel="stylesheet" href="/App/front_end/styles/dashboard/views/view_home/home.css">
+
+    <link rel="stylesheet" href="/App/front_end/styles/dashboard/views/view_folders/folders.css">
+
+    <link rel="stylesheet" href="/App/front_end/styles/dashboard/views/view_favourites/favourites.css">
+
+    <link rel="stylesheet" href="/App/front_end/styles/dashboard/views/view_bin/bin.css">
+
+    <link rel="stylesheet" href="/App/front_end/styles/dashboard/views/view_preferences/preferences.css">
+        <link rel="stylesheet" href="/App/front_end/styles/dashboard/views/view_preferences/account_preferences.css">
+
+    <!-- scripts -->
+    <!-- main scripts -->
+    <script src="/App/front_end/scripts/main/index.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/auth/auth.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/logout.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/search.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/upload.js" defer type="module"></script>
+
+
+
+    <script src="/App/front_end/scripts/dashboard/views/view_home/home.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/views/view_folders/folders.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/views/view_favourites/favourites.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/views/view_bin/bin.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/views/view_preferences/account_preferences.js" defer type="module"></script>
+    <script src="/App/front_end/scripts/dashboard/views/view_manager.js" defer type="module"></script>
+
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/App/front_end/assets/icons/favicon.svg">
+    <title>App</title>
+</head>
+<body>
+    <main>
+        <!-- auth section -->
+        <section id="auth-section">
+            <div id="auth-container">
+                <div id="error-container">
+                    <p id="error-message"></p>
+                </div>
+                <form id="auth-form">
+                    <!-- <h1 id="auth-form-title">Login</h1> -->
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" id="password" placeholder="Password" >
+                    <!-- <label for="confirm-password">Confirm Password</label>
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"> -->
+                    <a href="" id="login-registration-toggle-link"></a>
+                    <br>
+                    <br>
+                    <input type="submit" value="Login" id="auth-submit">
+                </form>
+            </div>
+            <div id="welcome-container">
+                <h1>Welcome to App</h1>
+                <br>
+                <h2>A seamlessly easy-to-use cloud-based file management system. Effortlessly organize and access all of your files from anywhere, at any time, whether you're online or offline.</h2>
+            </div>
+        </section>
+
+        <!-- dashboard -->
+        <section class="parent" id="dashboard-section">
+
+            <div class="uploads-container child">
+                <div class="uploads-container-top-wrapper">
+                    <p>Uploaded <span id="files-counter"></span> files</p>
+                    <div>
+                        <button class="options-uploads-container" id="hide-uploads-wrapper">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+    
+                        <button class="options-uploads-container" id="remove-uploads-container">
+                            <i class="fa-solid fas fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="uploads-queued-wrapper">
+                    <!-- upload containers go here -->
+                </div>
+            </div>
+
+            <div class="topbar">
+                <p>My Dashboard</p>
+                <div id="search-container">
+                    <form>
+                        <input type="search" name="search" id="search" placeholder="Search">
+                        <button type="submit" id="search-btn"><i class="fas fa-search search-icon" href="#search"></i></button>
+                    </form>
+                </div>
+
+                <!-- file/folder upload button -->
+                <div class="upload-dropdown">
+                    <button id="upload-btn" class="parent">Upload <i class="fas fa-cloud-upload-alt"></i></button>
+                    <div class="upload-options child">
+
+                        <label for="upload-file">Upload files</label>
+                        <input type="file" id="upload-file" multiple>
+
+                        <label for="upload-folder">Upload folder</label>
+                        <input type="file" id="upload-folder" multiple webkitdirectory directory>
+
+                    </div>
+                </div>
+
+                <div class="profile-preview">
+                    <img src="https://xsgames.co/randomusers/assets/images/favicon.png" width="50px" height="50px" alt="profile-picture">
+                </div>
+            </div>
+
+            <div id="sidebar-view-wrapper">
+                <div class="sidebar">
+                    <button class="view-btn">
+                        <i class="fas fa-home"></i>
+                    </button>
+    
+                    <button class="view-btn"">
+                        <i class="fas fa-folder"></i>
+                    </button>
+    
+                    <button class="view-btn">
+                        <i class="fas fa-star"></i>
+                    </button>
+    
+                    <button class="view-btn">
+                        <i class="fas fa-recycle"></i>
+                    </button>
+    
+                    <button class="view-btn">
+                        <i class="fas fa-gear"></i>
+                    </button>
+    
+    
+                    <!-- seperate button -->
+                    <button id="logout">
+                        <i class="fas fa-circle-chevron-left"></i>
+                    </button>
+                </div>
+
+                <div class="view child" id="home">
+                    <div id="home-main-container">
+                        <div id="home-top-container">
+                            <h1>Hi <span class="display-name"></span></h1>
+                            <small></small>
+                        </div>
+                    </div>
+                    <div id="home-storage-container">
+                        <small>Storage Info</small>
+                        <div class="space-remaining-display">
+
+                        </div>
+                        <small>Not enough space?</small>
+                        <button class="premium-btn">TRY PREMIUM</button>
+                    </div>
+
+                </div>
+    
+                <div class="view child hide-view" id="folders">
+                    <h1>All your folders</h1>
+                </div>
+    
+                <div class="view child hide-view" id="favourites">
+                    <h1>Favourites</h1>
+                </div>
+    
+                <div class="view child hide-view" id="recycling-bin">
+                    <h1>Recently deleted</h1>
+                </div>
+    
+                <div class="view child hide-view" id="preferences">
+    
+                    <h1>Preferences</h1>
+                    <div class="view" id="account-preferences">
+                        <div class="account-container">
+                            <div class="profile-container">
+                                <img src="https://xsgames.co/randomusers/assets/images/favicon.png" width="100px" height="100px" alt="profile picture">
+                                <h2><span class="display-name"></span></h2>
+                            </div>
+    
+                            <div class="credentials-container">
+                                <form id="cred-form">
+                                    <label for="display_name">Display Name</label>
+                                    <input type="text" name="display_name" id="cred-display-name" readonly>
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="cred-email" readonly>
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="cred-password" readonly>
+                                    <!-- save and cancel buttons only appear on key pressed on inputs and if credentials don't match -->
+                                    <div id="cred-btn-container">
+                                        <button id="cred-edit">Edit</button>
+                                        <button id="cred-discard">Discard</button>
+                                        <button id="cred-save">Save</button> 
+                                    </div>
+                                </form>
+                            </div>
+    
+                            <div class="subinfo-container">
+                                <small>Subscription</small>
+                                <h1>FREE TIER</h1>
+                                <button>Upgrade to Pro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+
+            
+        </section>
+    </main>
+</body>
+</html>

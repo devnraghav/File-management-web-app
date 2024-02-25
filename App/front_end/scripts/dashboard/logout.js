@@ -1,5 +1,8 @@
-// send token on every request that's made from the dashboard
-import logout_user from "./logout.js";
+
+
+// a basic logout function
+// we also need to do a clean up of the entire application before logout. -- coming soon.
+
 window.addEventListener('DOMContentLoaded', (e) => {
     const btn_logout = document.querySelector('#logout');
     // logout
@@ -21,7 +24,6 @@ window.addEventListener('DOMContentLoaded', (e) => {
             return res.json();
         })
         .then(data => {
-            console.log(data);
             if (data.logout) {
                 logout_user();
             }
@@ -29,3 +31,13 @@ window.addEventListener('DOMContentLoaded', (e) => {
         .catch(err => console.log(err));
     });
 });
+
+export default function logout_user() {
+    // this means logout was successful.
+    // clear clientside token and return to auth page
+    const auth_section = document.querySelector('#auth-section');
+    const dashboard_section = document.querySelector('#dashboard-section');
+    localStorage.setItem('file_management_app', '');
+    auth_section.style.display = 'flex';
+    dashboard_section.style.display = 'none';
+}

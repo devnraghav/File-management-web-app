@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 # importing all our endpoints
 # auth
-from api.endpoints import auth, dashboard
+from api.endpoints import auth, dashboard, file_folder_upload
 
 
 # creating our app instance
@@ -30,3 +30,4 @@ app.add_middleware(
 # including all our endpoints
 app.include_router(auth.auth_router)
 app.include_router(dashboard.dashboard_router)
+app.include_router(file_folder_upload.upload_router)
