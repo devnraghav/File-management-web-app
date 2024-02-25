@@ -7,7 +7,7 @@
 A seamlessly easy-to-use cloud-based file management software over the cloud. Effortlessly organize and access all of your files from anywhere, at any time, whether you're online or offline.
 
 #### Purpose and goals:
-- I will build this app for my personal use and as a portfolio project in the near future.
+- I will build this app for my personal use and as a portfolio project soon.
 - Why am I building this app?
     - Refine my fundamentals in file management.
     - Learn file structure
@@ -21,15 +21,17 @@ A seamlessly easy-to-use cloud-based file management software over the cloud. Ef
 
 
 #### MVP features:
-- **<i class="fa-solid fa-user-lock"></i> Simple User Authentication and Authorization**
-- **<i class="fa-solid fa-user-pen"></i> Simple Profile/Account section**
+- **<i class="fa-solid fa-user-lock"></i> ☑️ Simple User Authentication and Authorization**
+- **<i class="fa-solid fa-user-pen"></i> ☑️ Simple Profile/Account section**
 - **<i class="fa-solid fa-house-user"></i> Dashboard section to view all files/folders**
 - **<i class="fa-solid fa-file-arrow-down"></i> <i class="fa-solid fa-folder"></i> File and Folder upload**
 - **<i class="fa-solid fa-file-arrow-up"></i> <i class="fa-solid fa-folder"></i> File and Folder download**
 - **<i class="fa-solid fa-database"></i> Basic database integration and schema**
 - **<i class="fa-solid fa-circle-check"></i> Refactoring with very clean, readable, and scalable code**
+- **<i class="fa-solid fa-spray-can-sparkles"></i> Polishing UI and everything else**
 
-NON-MVP features:
+
+#### NON-MVP features:
 - Search functionality for folders, files, and their content
 - File and Folder filtering and organizing
 - Recently opened files
