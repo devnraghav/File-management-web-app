@@ -1,6 +1,8 @@
 # File Management SPA (In Development)
 
-#### MVP DEADLINE: FEB 29th, 2024.
+#### MVP DEADLINE: FEB 29th, 2024 (delayed due to project complications)
+
+Should be able get the MVP out before the second week of March 2024.
 
 #### Brief description of the project
 
