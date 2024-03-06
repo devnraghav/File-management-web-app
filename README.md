@@ -28,7 +28,7 @@ A seamlessly easy-to-use cloud-based file management software over the cloud. Ef
 - **<i class="fa-solid fa-house-user"></i> Dashboard section to view all files/folders**
 - **<i class="fa-solid fa-file-arrow-down"></i> <i class="fa-solid fa-folder"></i> File and Folder upload**
 - **<i class="fa-solid fa-file-arrow-up"></i> <i class="fa-solid fa-folder"></i> File and Folder download**
-- **<i class="fa-solid fa-database"></i> Basic database integration and schema**
+- **<i class="fa-solid fa-database"></i> ☑️ Basic database integration and schema**
 - **<i class="fa-solid fa-circle-check"></i> Refactoring with very clean, readable, and scalable code**
 - **<i class="fa-solid fa-spray-can-sparkles"></i> Polishing UI and everything else**
 
